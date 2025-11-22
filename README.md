@@ -4,7 +4,7 @@
 ## Team Members
 - Devi Annamreddy(G42683473) - Github: devi7037  
 - Harichandana Samudrala(G48786002) - Github: harichandana94  
-- Veditha Reddy Avuthu(G436964371) - Github: veditha04
+- Veditha Reddy Avuthu(G436964371) - Github: Veditha04
 ## Project Summary
 This project aims to develop an AI system that can automatically detect and localize defects in industrial products using only defect-free images for training. The system leverages a **multi-scale U-Net autoencoder**, which learns to reconstruct normal patterns but struggles on anomalous regions, enabling defect detection via reconstruction error analysis.
 
