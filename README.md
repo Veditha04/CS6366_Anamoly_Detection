@@ -89,18 +89,23 @@ Clone the repository:
 
 bash
 Copy code
+```
 git clone https://github.com/Veditha04/Anomaly_Detection.git
 cd Anomaly_Detection
 Create and activate a virtual environment:
+```
 
 bash
 Copy code
+```
 python3 -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 Install dependencies:
+```
 
 bash
 Copy code
+
 pip install --upgrade pip
 pip install -r requirements.txt
 Do not commit the .venv folder — it is ignored via .gitignore.
