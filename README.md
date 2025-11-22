@@ -28,7 +28,7 @@ We are using the **MVTec Anomaly Detection Dataset (MVTec AD)**:
 
 - Official Source: [https://www.mvtec.com/company/research/datasets/mvtec-ad](https://www.mvtec.com/company/research/datasets/mvtec-ad)
 
-**Note:** The dataset is stored in **Google Drive** for this project due to its large size. Team members can access it by mounting Drive in Google Colab.
+**Note:** Due to the large size of the dataset, each team member has stored the MVTec AD dataset locally on their own machine while working in VS Code.
 
 ---
 
