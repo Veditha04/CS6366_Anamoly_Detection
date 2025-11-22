@@ -87,6 +87,7 @@ Installation
 Clone the repository:
 
 bash
+
 Copy code
 ```
 git clone https://github.com/Veditha04/Anomaly_Detection.git
@@ -95,6 +96,7 @@ Create and activate a virtual environment:
 ```
 
 bash
+
 Copy code
 ```
 python3 -m venv .venv
@@ -103,6 +105,7 @@ Install dependencies:
 ```
 
 bash
+
 Copy code
 ```
 pip install --upgrade pip
@@ -116,11 +119,14 @@ Do not commit the .venv folder — it is ignored via .gitignore.
 Contributing
 Fork the repository.
 
-Create a new branch: ``` git checkout -b feature-name.```
+Create a new branch: 
+``` git checkout -b feature-name.```
 
-Commit your changes: ```git commit -m "Add feature".```
+Commit your changes: 
+```git commit -m "Add feature".```
 
-Push to your branch: ```git push origin feature-name.```
+Push to your branch: 
+```git push origin feature-name.```
 
 
 
