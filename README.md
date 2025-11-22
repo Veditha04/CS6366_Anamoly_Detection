@@ -23,8 +23,6 @@ This project aims to develop an AI system that can automatically detect and loca
 | Screw     | 320            | 41 / 119                    | Manipulated tips, scratches | Structural anomalies |
 
 ---
----
-
 ## Dataset
 We are using the **MVTec Anomaly Detection Dataset (MVTec AD)**:
 
