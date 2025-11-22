@@ -1,4 +1,3 @@
-# Anomaly_Detection
 # Unsupervised Multi-Scale Anomaly Detection in Industrial Manufacturing
 
 ## Team Members
@@ -22,7 +21,7 @@ This project aims to develop an AI system that can automatically detect and loca
 | Hazelnut  | 391            | 40 / 70                     | Cracks, cuts, print defects | Natural texture variation |
 | Screw     | 320            | 41 / 119                    | Manipulated tips, scratches | Structural anomalies |
 
----
+
 ## Dataset
 We are using the **MVTec Anomaly Detection Dataset (MVTec AD)**:
 
@@ -30,7 +29,7 @@ We are using the **MVTec Anomaly Detection Dataset (MVTec AD)**:
 
 **Note:** Due to the large size of the dataset, each team member has stored the MVTec AD dataset locally on their own machine while working in VS Code.
 
----
+
 
 ## Initial Work
 For the first stage of the project, we have implemented the following:
@@ -38,7 +37,7 @@ For the first stage of the project, we have implemented the following:
 1. **Data Pipeline**
    - Dataset loader for all categories.
    - Data transformations: resizing, tensor conversion.
-   - Google Drive integration for dataset storage.
+   - Dataset downloaded from the official source and stored locally in the repository (data/mvtec_anomaly_detection).
 
 2. **Model Implementation**
    - Multi-Scale U-Net Autoencoder skeleton.
@@ -105,47 +104,25 @@ Install dependencies:
 
 bash
 Copy code
-
+```
 pip install --upgrade pip
 pip install -r requirements.txt
 Do not commit the .venv folder — it is ignored via .gitignore.
+```
 
-Usage
-Training
-bash
-Copy code
-python src/train.py --dataset data/mvtec_anomaly_detection --category bottle --epochs 50 --batch_size 16
-Inference
-bash
-Copy code
-python src/inference.py --dataset data/mvtec_anomaly_detection --category bottle --checkpoint checkpoints/bottle.pth
-Generates reconstructed images and heatmaps highlighting anomalies.
 
-Outputs are saved in the results/ folder.
 
-Jupyter Notebook Example
-bash
-Copy code
-jupyter notebook notebooks/inference_demo.ipynb
-Interactive visualization of predictions.
-
-Results
-Example output: results/inference_results.png
-
-Heatmaps highlight defective regions based on reconstruction errors.
-
-Metrics can be calculated at image and pixel levels.
 
 Contributing
 Fork the repository.
 
-Create a new branch: git checkout -b feature-name.
+Create a new branch: ``` git checkout -b feature-name.```
 
-Commit your changes: git commit -m "Add feature".
+Commit your changes: ```git commit -m "Add feature".```
 
-Push to your branch: git push origin feature-name.
+Push to your branch: ```git push origin feature-name.```
 
-Open a Pull Request.
+
 
 License
 This project is licensed under the MIT License — see LICENSE for details.
