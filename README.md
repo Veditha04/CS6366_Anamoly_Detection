@@ -62,3 +62,84 @@ For the first stage of the project, we have implemented the following:
 
 
 ## Repository Structure
+Anomaly_Detection/
+│
+├── src/                        # Source code
+│   ├── dataset.py               # Data loader and preprocessing
+│   ├── model.py                 # Multi-Scale U-Net Autoencoder
+│   ├── train.py                 # Training script
+│   ├── inference.py             # Inference / evaluation
+│   └── utils.py                 # Utility functions
+│
+├── results/                     # Generated outputs
+│   └── inference_results.png
+│
+├── notebooks/                   # Jupyter notebooks
+│   └── inference_demo.ipynb
+│
+├── data/                        # Local dataset folder
+│   └── mvtec_anomaly_detection/
+│
+├── requirements.txt             # Python dependencies
+├── .gitignore                   # Ignored files/folders
+└── README.md                    # This file
+Installation
+Clone the repository:
+
+bash
+Copy code
+git clone https://github.com/Veditha04/Anomaly_Detection.git
+cd Anomaly_Detection
+Create and activate a virtual environment:
+
+bash
+Copy code
+python3 -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+Install dependencies:
+
+bash
+Copy code
+pip install --upgrade pip
+pip install -r requirements.txt
+⚠️ Do not commit the .venv folder — it is ignored via .gitignore.
+
+Usage
+Training
+bash
+Copy code
+python src/train.py --dataset data/mvtec_anomaly_detection --category bottle --epochs 50 --batch_size 16
+Inference
+bash
+Copy code
+python src/inference.py --dataset data/mvtec_anomaly_detection --category bottle --checkpoint checkpoints/bottle.pth
+Generates reconstructed images and heatmaps highlighting anomalies.
+
+Outputs are saved in the results/ folder.
+
+Jupyter Notebook Example
+bash
+Copy code
+jupyter notebook notebooks/inference_demo.ipynb
+Interactive visualization of predictions.
+
+Results
+Example output: results/inference_results.png
+
+Heatmaps highlight defective regions based on reconstruction errors.
+
+Metrics can be calculated at image and pixel levels.
+
+Contributing
+Fork the repository.
+
+Create a new branch: git checkout -b feature-name.
+
+Commit your changes: git commit -m "Add feature".
+
+Push to your branch: git push origin feature-name.
+
+Open a Pull Request.
+
+License
+This project is licensed under the MIT License — see LICENSE for details.
