@@ -109,7 +109,7 @@ bash
 Copy code
 pip install --upgrade pip
 pip install -r requirements.txt
-⚠️ Do not commit the .venv folder — it is ignored via .gitignore.
+Do not commit the .venv folder — it is ignored via .gitignore.
 
 Usage
 Training
