@@ -62,6 +62,8 @@ For the first stage of the project, we have implemented the following:
 
 
 ## Repository Structure
+
+
 Anomaly_Detection/
 │
 ├── src/                        # Source code
@@ -83,6 +85,11 @@ Anomaly_Detection/
 ├── requirements.txt             # Python dependencies
 ├── .gitignore                   # Ignored files/folders
 └── README.md                    # This file
+
+
+
+
+
 Installation
 Clone the repository:
 
