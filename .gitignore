@@ -1,10 +1,37 @@
-.venv/
-
+#dataset folders
 data/
+dataset/
+mvtec/
+MVTec-AD/
+*/data/
+*/dataset/
 
-__pycache__/
-.ipynb_checkpoints/
-.DS_Store
-
+#model checkpoints
+*.pth
 *.pt
-*.pth 
+
+#numpy result files
+*.npy
+*.npz
+
+#training results/plots
+results/
+*/results/
+
+#Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+#environment/virtualenv files
+.env
+.venv
+env/
+venv/
+
+#Colab/Notebook checkpoints
+.ipynb_checkpoints/
+
+#temporary files
+*.log
+.DS_Store
