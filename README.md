@@ -196,3 +196,73 @@ Industrial anomaly detection system using two autoencoder architectures on the M
 4. **Baseline slightly better on cable category** (49.96% vs 48.56%)
 
 ## Project Structure
+CS6366_Anamoly_Detection/
+├── src/ # Source code
+│ ├── dataset.py # Data loading and preprocessing
+│ ├── models.py # Autoencoder architectures
+│ ├── train_baseline_enhanced.py # Baseline training
+│ ├── train_multiscale_enhanced.py # Multi-scale training
+│ ├── evaluate_models.py # Comprehensive evaluation
+│ ├── eval_multiscale_ssim.py # SSIM-based evaluation
+│ ├── run_all.py # Complete pipeline
+│ └── summary.py # Results summary
+├── models/ # Trained model checkpoints
+├── results/ # Training and evaluation results
+│ ├── baseline/ # Baseline model results
+│ ├── multiscale/ # Multi-scale model results
+│ └── comparison/ # Comparative analysis
+├── data/ # Dataset (not included in repo)
+└── README.md # This file
+
+
+## Installation
+```bash
+# Install dependencies
+pip install torch torchvision numpy opencv-python scikit-learn scikit-image matplotlib seaborn tqdm Pillow pandas
+
+Usage
+Run Complete Pipeline
+python
+from run_all import main
+main()
+Train Specific Model
+bash
+# Train baseline model
+python train_baseline_enhanced.py
+
+# Train multi-scale model  
+python train_multiscale_enhanced.py
+Evaluate Models
+bash
+# Comprehensive evaluation
+python evaluate_models.py
+
+# SSIM-based evaluation
+python eval_multiscale_ssim.py
+
+# Generate summary report
+python summary.py
+Technical Details
+Framework: PyTorch 2.0+
+
+Training: Adam optimizer, L1 loss, learning rate scheduling
+
+Validation: Early stopping, model checkpointing
+
+Evaluation: AUROC, PRAUC, L1 error, SSIM
+
+Hardware: NVIDIA GPU (Google Colab)
+
+Files Generated
+models/baseline_ae_best_enhanced.pth - Best baseline model
+
+models/multiscale_ae_best_enhanced.pth - Best multi-scale model
+
+results/comparison/model_comparison.png - Performance comparison plot
+
+results/comparison/evaluation_results.npz - All evaluation metrics
+
+project_summary.json - Complete project summary
+
+Conclusion
+The project successfully implements and compares two autoencoder architectures for industrial anomaly detection. The multi-scale autoencoder shows superior performance on texture-based anomalies while maintaining competitive performance overall. The modular design allows for easy extension to additional categories or architectures.
