@@ -132,3 +132,67 @@ Push to your branch:
 
 License
 This project is licensed under the MIT License — see LICENSE for details.
+
+
+
+%%writefile "/content/drive/My Drive/CS6366_Anamoly_Detection/README.md"
+# CS6366: Industrial Anomaly Detection with Autoencoders
+
+## Team Members
+1. **Member 1**: Dataset preprocessing, Baseline autoencoder architecture
+2. **Member 2**: Multi-scale U-Net architecture, Training pipeline optimization  
+3. **Member 3**: Evaluation metrics, Visualization, Project documentation
+
+## Project Overview
+Industrial anomaly detection system using two autoencoder architectures on the MVTec AD dataset. The project compares a baseline symmetric autoencoder with a multi-scale U-Net style autoencoder.
+
+## Key Features
+- **Two Model Architectures**: Baseline vs Multi-scale autoencoders
+- **Comprehensive Evaluation**: L1 error, SSIM, AUROC, PRAUC metrics
+- **Visualization**: Training curves, heatmaps, score distributions
+- **Category-wise Analysis**: Per-category performance comparison
+- **Complete Pipeline**: End-to-end training and evaluation
+
+## Dataset
+- **Source**: MVTec Anomaly Detection Dataset
+- **Categories Used**: bottle (209), hazelnut (391), cable (224), tile (230)
+- **Total Training Images**: 1,054
+- **Total Test Images**: 460
+
+## Model Architectures
+
+### 1. Baseline Autoencoder
+- Symmetric encoder-decoder structure
+- No skip connections
+- 1.73 million parameters
+- Best validation loss: 0.021365
+
+### 2. Multi-scale Autoencoder  
+- U-Net style with skip connections
+- Multi-scale feature learning
+- 1.93 million parameters
+- Best validation loss: 0.006195
+
+## Results
+
+### Overall Performance
+| Model | AUROC | PRAUC | Normal Error | Anomaly Error |
+|-------|-------|-------|--------------|---------------|
+| Baseline | 0.5425 | 0.7264 | 0.021152 | 0.021468 |
+| Multi-scale | 0.5368 | 0.6690 | 0.006091 | 0.006246 |
+
+### Per-Category AUROC
+| Category | Baseline | Multi-scale |
+|----------|----------|-------------|
+| Bottle | 0.4587 | 0.5159 |
+| Hazelnut | 0.7200 | **0.9636** |
+| Cable | 0.4996 | 0.4856 |
+| Tile | 0.6595 | **0.7385** |
+
+### Key Findings
+1. **Multi-scale model achieves lower reconstruction error** (0.006 vs 0.021)
+2. **Hazelnut category shows excellent performance** with multi-scale (96.36% AUROC)
+3. **Multi-scale excels on texture-based anomalies** (tile: 73.85% vs 65.95%)
+4. **Baseline slightly better on cable category** (49.96% vs 48.56%)
+
+## Project Structure
