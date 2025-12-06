@@ -252,7 +252,7 @@ Implemented in `src/eval_multiscale_ssim.py`:
 - The **multi-scale model** achieves substantially **lower reconstruction error** (≈0.006 vs 0.021).
 - On **hazelnut**, the multi-scale model reaches **96.36% AUROC**, indicating very strong anomaly separation.
 - On **tile** (texture-based anomalies), multi-scale also outperforms baseline (73.85% vs 65.95% AUROC).
-- Baseline slightly edges multi-scale on **cable**, suggesting room to explore architecture tuning or category-specific thresholds.
+- The baseline autoencoder slightly outperforms the multi-scale model on the cable category, suggesting potential benefits from further architecture tuning, regularization adjustments, or   category-specific thresholding.
 - SSIM-based heatmaps qualitatively highlight defective regions, making the model behavior more interpretable.
 
 ---
