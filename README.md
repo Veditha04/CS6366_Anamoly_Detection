@@ -114,10 +114,10 @@ The core model used in this project is a U-Net–style MultiScale Convolutional 
 
 The MultiScale Autoencoder is designed to reconstruct normal MVTec images. During inference, defective images fail to reconstruct accurately, and the difference between input and reconstruction becomes the anomaly score.
 
-**How It Works**
+# **How It Works**
 
 
-_Encoder_
+## _Encoder_
 
 Uses stacked convolutional blocks to extract hierarchical features.
 
@@ -135,7 +135,7 @@ Contains compressed representation of normal image distribution.
 Forces the model to learn only normal appearance patterns.
 
 
-_Decoder_
+## _Decoder_
 
 Uses transposed convolutions to upsample back to 128×128.
 
@@ -144,7 +144,7 @@ Skip connections bring high-resolution details from the encoder.
 Reconstruction matches normal images well, but deviates on anomalies.
 
 
-_Why this model is better than a baseline autoencoder_
+## _Why this model is better than a baseline autoencoder_
 
 Skip connections preserve fine texture, improving reconstructions.
 
@@ -157,7 +157,7 @@ More stable training because gradients flow through skip paths.
 Outperforms the BaselineAutoencoder in AUROC across all categories.
 
 
-**Example of Model or Component Functionality**
+## **Example of Model or Component Functionality**
 
 Task: Detect defects using reconstruction error.
 
@@ -332,7 +332,7 @@ Clone the repository:
 
 ```
 git clone https://github.com/Veditha04/Anomaly_Detection.git
-cd Anomaly_Detection
+CS6366_Anamoly_Detection
 ```
 Create and activate a virtual environment:
 
