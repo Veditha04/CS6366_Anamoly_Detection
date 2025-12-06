@@ -138,10 +138,7 @@ This project is licensed under the MIT License — see LICENSE for details.
 %%writefile "/content/drive/My Drive/CS6366_Anamoly_Detection/README.md"
 # CS6366: Industrial Anomaly Detection with Autoencoders
 
-## Team Members
-1. **Member 1**: Dataset preprocessing, Baseline autoencoder architecture
-2. **Member 2**: Multi-scale U-Net architecture, Training pipeline optimization  
-3. **Member 3**: Evaluation metrics, Visualization, Project documentation
+
 
 ## Project Overview
 Industrial anomaly detection system using two autoencoder architectures on the MVTec AD dataset. The project compares a baseline symmetric autoencoder with a multi-scale U-Net style autoencoder.
