@@ -1,6 +1,22 @@
+# Ignore model weight files
 models/*.pth
+models/*.pt
+
+# Ignore result images and arrays
 results/*
+
+# Python cache
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
 *.ipynb_checkpoints
-*.tmp
+
+# Logs / temp
 *.log
+*.tmp
+
+# Environments / IDE / misc
+.env
+.venv/
+.vscode/
