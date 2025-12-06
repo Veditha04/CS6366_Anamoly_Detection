@@ -115,6 +115,8 @@ The core model used in this project is a U-Net–style MultiScale Convolutional 
 The MultiScale Autoencoder is designed to reconstruct normal MVTec images. During inference, defective images fail to reconstruct accurately, and the difference between input and reconstruction becomes the anomaly score.
 
 **How It Works**
+
+
 _Encoder_
 
 Uses stacked convolutional blocks to extract hierarchical features.
@@ -125,11 +127,13 @@ Max pooling reduces spatial size (128 → 64 → 32 → 16).
 
 Produces multi-scale feature maps capturing textures and shapes.
 
+
 _Latent / Bottleneck_
 
 Contains compressed representation of normal image distribution.
 
 Forces the model to learn only normal appearance patterns.
+
 
 _Decoder_
 
@@ -138,6 +142,7 @@ Uses transposed convolutions to upsample back to 128×128.
 Skip connections bring high-resolution details from the encoder.
 
 Reconstruction matches normal images well, but deviates on anomalies.
+
 
 _Why this model is better than a baseline autoencoder_
 
@@ -151,6 +156,7 @@ More stable training because gradients flow through skip paths.
 
 Outperforms the BaselineAutoencoder in AUROC across all categories.
 
+
 **Example of Model or Component Functionality**
 
 Task: Detect defects using reconstruction error.
@@ -160,7 +166,9 @@ During evaluation (evaluate_models.py), the model processes both normal and defe
 Example Workflow:
 
 img, label, _, _, _ = test_dataset[i]
+
 recon = model(img.unsqueeze(0).to(device))
+
 error = torch.abs(recon - img.unsqueeze(0).to(device)).mean().item()
 
 Example Results:
