@@ -76,6 +76,137 @@ Implemented in: `src/models.py` (`BaselineAutoencoder`)
 
 Implemented in: `src/models.py` (`MultiScaleAutoencoder`)
 
+**Model / Component Design**
+
+The core model used in this project is a U-Net–style MultiScale Convolutional Autoencoder designed for anomaly detection on the MVTec AD dataset. The network learns to reconstruct normal images, and reconstruction error is used to detect defects.
+
+                        MultiScaleAutoencoder (U-Net style)
+
+                       Input: 3 × 128 × 128 (RGB MVTec image)
+                                        │
+                                        ▼
+                            ┌────────────────────┐
+                            │    ENCODER PATH    │
+                            └────────────────────┘
+         ┌─────────────────────────────────────────────────────────────┐
+         │ ConvBlock(3 → 32) → x1  ───────────────┐                    │
+         │ MaxPool2d(2)                           │                    │
+         │ ConvBlock(32 → 64) → x2 ────────┐      │                    │
+         │ MaxPool2d(2)                    │      │                    │
+         │ ConvBlock(64 → 128) → x3 ───┐   │      │                    │
+         │ MaxPool2d(2)                 │   │      │                    │
+         │ ConvBlock(128 → 256) → x4    │   │      │ (bottleneck)       │
+         └──────────────────────────────┴───┴──────┘
+
+                            ┌────────────────────┐
+                            │    DECODER PATH    │
+                            └────────────────────┘
+         x4 ── ConvTranspose2d(256 → 128) ──> up3
+                               │
+                               ▼
+                    concat(up3, x3) → [256] → ConvBlock → dec3
+                               │
+                               ▼
+                      ConvTranspose2d(128 → 64) → up2
+                               │
+                               ▼
+                    concat(up2, x2) → [128] → ConvBlock → dec2
+                               │
+                               ▼
+                      ConvTranspose2d(64 → 32) → up1
+                               │
+                               ▼
+                    concat(up1, x1) → [64] → ConvBlock → dec1
+                               │
+                               ▼
+                       final_conv: 1×1 Conv(32 → 3)
+                       out_act: Sigmoid (outputs in [0,1])
+
+                       Output: 3 × 128 × 128 (reconstructed image)
+
+
+**Model / Component Description**
+
+The MultiScale Autoencoder is designed to reconstruct normal MVTec images. During inference, defective images fail to reconstruct accurately, and the difference between input and reconstruction becomes the anomaly score.
+
+How It Works
+Encoder
+
+Uses stacked convolutional blocks to extract hierarchical features.
+
+Each block includes Conv → BatchNorm → ReLU (twice).
+
+Max pooling reduces spatial size (128 → 64 → 32 → 16).
+
+Produces multi-scale feature maps capturing textures and shapes.
+
+Latent / Bottleneck
+
+Contains compressed representation of normal image distribution.
+
+Forces the model to learn only normal appearance patterns.
+
+Decoder
+
+Uses transposed convolutions to upsample back to 128×128.
+
+Skip connections bring high-resolution details from the encoder.
+
+Reconstruction matches normal images well, but deviates on anomalies.
+
+Why this model is better than a baseline autoencoder
+
+Skip connections preserve fine texture, improving reconstructions.
+
+Multi-scale learning helps detect both small & large defects.
+
+Sharper anomaly localization due to pixel-wise reconstruction error.
+
+More stable training because gradients flow through skip paths.
+
+Outperforms the BaselineAutoencoder in AUROC across all categories.
+
+**Example of Model or Component Functionality**
+
+Task: Detect defects using reconstruction error.
+
+During evaluation (evaluate_models.py), the model processes both normal and defective images from MVTec AD.
+
+Example Workflow:
+img, label, _, _, _ = test_dataset[i]
+recon = model(img.unsqueeze(0).to(device))
+error = torch.abs(recon - img.unsqueeze(0).to(device)).mean().item()
+
+Example Results:
+| Image Type    | Reconstruction Output                | Reconstruction Error | Interpretation       |
+| ------------- | ------------------------------------ | -------------------- | -------------------- |
+| **Normal**    | Nearly identical                     | ~0.005               | Normal               |
+| **Defective** | Missing details → blurred out defect | ~0.030–0.045         | **Anomaly detected** |
+
+
+The autoencoder learns only normal patterns.
+
+When a defect (scratch, contamination, crack, hole, misprint, etc.) appears, the model cannot reconstruct it.
+
+The missing or smoothed region produces high pixel-wise error.
+
+This error is used to compute:
+
+AUROC
+
+AUPRC
+
+Precision/Recall
+
+Category-level comparison between baseline and multiscale models
+
+Final Output of the System
+
+Trained baseline & multiscale models
+
+Reconstruction visualizations
+
+Pixel-level error heatmaps
 ---
 
 ## Training & Evaluation
