@@ -162,7 +162,7 @@ The MultiScale Autoencoder improves reconstruction quality and defect localizati
 - **Better gradient flow** through skip pathways stabilizes training and reduces the chance of vanishing gradients.
 - **Sharper reconstructions** lead to more meaningful pixel-wise error maps and clearer SSIM heatmaps.
 - Although AUROC values are similar, the MultiScale model achieves a **much lower validation loss** (0.0062 vs 0.0214), reflecting significantly more accurate image reconstruction.
-- Qualitatively, the MultiScale Autoencoder provides **clearer localization of anomalies**, especially visible in SSIM heatmaps where damaged regions appear bright and well-defined.
+- The MultiScale Autoencoder yields more precise anomaly localization, which is particularly evident in the SSIM heatmaps where the defective areas stand out as bright, sharply outlined     regions.
 
 Overall, the MultiScale Autoencoder is the more effective architecture for **interpretable anomaly detection and localization**, even when quantitative scores are close.
 
@@ -260,9 +260,9 @@ The system produces:
 **Final Evaluation Summary:**
 ### Quantitative Results (Mean L1 Error + AUROC)
 
-| Model                      | Normal Mean Error | Anomaly Mean Error | AUROC  |
-|---------------------------|-------------------|--------------------|--------|
-| **Baseline Autoencoder**  | 0.021152          | 0.021468           | 0.5425 |
+| Model                       | Normal Mean Error | Anomaly Mean Error | AUROC  |
+|---------------------------  |-------------------|--------------------|--------|
+| **Baseline Autoencoder**    | 0.021152          | 0.021468           | 0.5425 |
 | **Multi-Scale Autoencoder** | 0.006091        | 0.006246           | 0.5368 |
 
 While AUROC values are similar, the **MultiScale Autoencoder achieves much lower validation loss (0.0062 vs 0.0214)** and produces **sharper reconstructions and clearer SSIM heatmaps**, making it more useful for qualitative defect localization.
@@ -390,9 +390,9 @@ pip install -r requirements.txt
 1. Prepare the Dataset
 
 Download the MVTec AD dataset (categories: bottle, hazelnut, cable, tile) from the official website:
-
+```
 https://www.mvtec.com/company/research/datasets/mvtec-ad
-
+```
 2. Run the Entire Pipeline (Train + Evaluate)
 
 This will train both models and run evaluation automatically.
@@ -450,10 +450,10 @@ models/baseline_ae_best_enhanced.pth
 models/multiscale_ae_best_enhanced.pth
 ```
 
-# Results Summary (Short)
+# Results And Summary 
 
 - Multi-scale autoencoder: Best validation loss = 0.006195
 - Baseline autoencoder: Best validation loss = 0.021365
 - Hazelnut category AUROC = 0.9636 (excellent)
-- - SSIM heatmaps qualitatively highlight defect regions, making the anomalies easier to interpret.
+- SSIM heatmaps qualitatively highlight defect regions, making the anomalies easier to interpret.
 
