@@ -2,9 +2,6 @@
 models/*.pth
 models/*.pt
 
-# Ignore result images and arrays
-results/*
-
 # Python cache
 __pycache__/
 *.pyc
