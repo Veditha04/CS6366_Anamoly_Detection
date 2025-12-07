@@ -1,6 +1,6 @@
 # CS6366 – Industrial Anomaly Detection with Autoencoders
 
-## Project: Unsupervised Multi-Scale Anomaly Detection in Industrial Manufacturing
+
 
 ## Team Members
 - Devi Annamreddy(G42683473) - GitHub: [devi7037](https://github.com/devi7037)  
