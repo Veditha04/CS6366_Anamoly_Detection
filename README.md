@@ -63,7 +63,7 @@ We use a subset of the **MVTec AD** dataset:
 - **Best validation loss:** **0.021365** (L1)
 
 Implemented in: `src/models.py` (`BaselineAutoencoder`)
-
+---
 ### 2. Multi-Scale Autoencoder (U-Net Style)
 
 - U-Net–style autoencoder with:
@@ -75,7 +75,7 @@ Implemented in: `src/models.py` (`BaselineAutoencoder`)
 - **Best validation loss:** **0.006195** (L1)
 
 Implemented in: `src/models.py` (`MultiScaleAutoencoder`)
-
+---
 ### 3. Model or Component Design
 
 The core model used in this project is a U-Net–style MultiScale Convolutional Autoencoder designed for anomaly detection on the MVTec AD dataset. The network learns to reconstruct normal images, and reconstruction error is used to detect defects.
@@ -116,7 +116,7 @@ The core model used in this project is a U-Net–style MultiScale Convolutional 
             final_conv: 1×1 Conv(32 → 3),  activation: Sigmoid
             
                        Output: 3 × 256 × 256
-
+---
 ### 4. Model or Component Description
 
 The **MultiScale Autoencoder** is designed to reconstruct *normal* MVTec images.  
@@ -147,25 +147,7 @@ difference between input and reconstruction becomes the anomaly score.
   - `up1`: reconstructs **256×256** and concatenates with encoder output x1
 - Each concatenated tensor is processed by a ConvBlock.
 - A final `1×1 Conv` followed by `Sigmoid` produces the reconstructed **RGB image**.
-
-**Interpretation:**
-- Normal images reconstruct cleanly.  
-- Defective regions reconstruct poorly, producing higher pixel-wise error or bright areas in SSIM heatmaps.  
-- This reconstruction gap is used as the **anomaly score**.
-
-#### Why This Model Is Better Than the Baseline Autoencoder
-
-The MultiScale Autoencoder improves reconstruction quality and defect localization through several architectural advantages:
-
-- **Skip connections preserve high-resolution spatial details**, allowing the decoder to recover fine textures that the baseline model often blurs.
-- **Multi-scale feature learning** enables the model to detect both small defects (scratches, cracks, dents) and larger structural anomalies.
-- **Better gradient flow** through skip pathways stabilizes training and reduces the chance of vanishing gradients.
-- **Sharper reconstructions** lead to more meaningful pixel-wise error maps and clearer SSIM heatmaps.
-- Although AUROC values are similar, the MultiScale model achieves a **much lower validation loss** (0.0062 vs 0.0214), reflecting significantly more accurate image reconstruction.
-- The MultiScale Autoencoder yields more precise anomaly localization, which is particularly evident in the SSIM heatmaps where the defective areas stand out as bright, sharply outlined     regions.
-
-Overall, the MultiScale Autoencoder is the more effective architecture for **interpretable anomaly detection and localization**, even when quantitative scores are close.
-
+---
 ### 5. Example of Model or Component Functionality
 
 This section explains how the autoencoders detect anomalies and how the SSIM heatmaps
@@ -189,7 +171,7 @@ These per-image scores are used to compute:
 - **Overall AUROC and PR-AUC**
 - **Per-category AUROC** (bottle, hazelnut, cable, tile)
 - **Mean L1 error** on normal vs anomalous samples
-
+---
 #### Final Model Metrics (Mean L1 Error)
 
 **Baseline Autoencoder**
@@ -237,11 +219,10 @@ It also reports quantitative metrics:
 
 - **AUROC (SSIM error):** 0.5037  
 - **Mean SSIM error – good:** 0.0068  
-- **Mean SSIM error – anomalous:** 0.0066  
-
-These SSIM heatmaps qualitatively highlight **cracks, scratches, bent wires, broken areas, contamination, misprints, and other subtle defects**, making them valuable for **interpretable anomaly localization** in industrial inspection tasks.
-
-### Final Output of the System
+- **Mean SSIM error – anomalous:** 0.0066
+- These SSIM heatmaps qualitatively highlight **cracks, scratches, bent wires, broken areas, contamination, misprints, and other subtle defects**, making them valuable for **interpretable anomaly localization** in industrial inspection tasks.
+---
+### 6. Final Output of the System
 
 The system produces:
 
@@ -404,7 +385,7 @@ This will train both models and run evaluation automatically.
 
 From the project root:
 ```
-python -m src.run_all --all
+python src/run_all.py --all
 ```
 
 This command will
