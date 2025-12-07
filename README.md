@@ -366,6 +366,11 @@ CS6366_Anamoly_Detection/
 └── README.md                   # Project documentation (this file)
 
 ```
+## Google Colab Notebook
+
+Click here to open the notebook in Google Colab:  
+[Open the Project Notebook](https://colab.research.google.com/drive/1IrGuVx5fZLacPbnHCsfeaAj6iUzFUy_M?usp=sharing)
+
 # Installation
 
 Clone the repository:
