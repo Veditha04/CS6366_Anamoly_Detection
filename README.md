@@ -47,7 +47,7 @@ We use a subset of the **MVTec AD** dataset:
 
 > **Note:** Due to dataset size and license, the **MVTec images are not included in this repository**.  
 > For reproduction, download the dataset from the official source and place the relevant categories under:
->
+
 > `data/mvtec/<category>/train` and `data/mvtec/<category>/test`
 
 ---
