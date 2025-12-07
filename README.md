@@ -18,6 +18,11 @@ on multiple categories from the **MVTec Anomaly Detection Dataset (MVTec AD)**.
 
 The models learn to reconstruct normal patterns. At test time, regions that do not match the learned patterns reconstruct poorly, and these reconstruction differences (L1 error and SSIM-based maps) are used to **identify and localize defects**.
 
+## Google Colab Notebook
+
+Click here to open the notebook in Google Colab:  
+[Open the Project Notebook](https://colab.research.google.com/drive/1IrGuVx5fZLacPbnHCsfeaAj6iUzFUy_M?usp=sharing)
+
 ### Key Objectives
 
 - Train on **defect-free industrial images only** (unsupervised anomaly detection).
@@ -347,10 +352,7 @@ CS6366_Anamoly_Detection/
 └── README.md                   # Project documentation (this file)
 
 ```
-## Google Colab Notebook
 
-Click here to open the notebook in Google Colab:  
-[Open the Project Notebook](https://colab.research.google.com/drive/1IrGuVx5fZLacPbnHCsfeaAj6iUzFUy_M?usp=sharing)
 
 # Installation
 
